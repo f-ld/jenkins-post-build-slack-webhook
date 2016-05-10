@@ -12,10 +12,22 @@
     tags they use. Views are always organized according to its owner class,
     so it should be straightforward to find them.
   -->
-  <f:section title="Post build slack webhook">
-    <f:entry title="French" field="useFrench"
-      description="Check if we should say hello in French">
-      <f:checkbox />
+  <f:section title="Post build slack webhook notifications">
+    <f:entry title="Default Slack webhook URL" field="slackDefaultWebhook"
+      description="The default webhook url">
+      <f:textbox />
+    </f:entry>
+    <f:entry title="Default Slack Channel" field="slackDefaultChannel"
+             description="The default slack channel">
+      <f:textbox />
+    </f:entry>
+    <f:entry title="Default Username" field="slackDefaultUsername"
+             description="The default username to use for sent messages">
+      <f:textbox />
+    </f:entry>
+    <f:entry title="Default Emoji" field="slackDefaultEmoji"
+             description="The default emoji to use for sent messages">
+      <f:textbox />
     </f:entry>
   </f:section>
 </j:jelly>

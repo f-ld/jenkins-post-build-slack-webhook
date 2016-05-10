@@ -1,0 +1,65 @@
+<?jelly escape-by-default='true'?>
+<j:jelly xmlns:j="jelly:core" xmlns:st="jelly:stapler" xmlns:d="jelly:define" xmlns:l="/lib/layout" xmlns:t="/lib/hudson" xmlns:f="/lib/form">
+  <!--
+    This jelly script is used for per-project configuration.
+
+    See global.jelly for a general discussion about jelly script.
+  -->
+
+  <!--
+    Creates a text field that shows the value of the "name" property.
+    When submitted, it will be passed to the corresponding constructor parameter.
+  -->
+  <f:entry title="Slack webhook URL" field="slackWebhook"
+           description="The default webhook url">
+    <f:textbox default="${descriptor.getSlackDefaultWebhook()}" />
+  </f:entry>
+  <f:entry title="Slack Channel" field="slackChannel"
+           description="The default slack channel">
+    <f:textbox default="${descriptor.getSlackDefaultChannel()}" />
+  </f:entry>
+  <f:entry title="Username" field="slackUsername"
+           description="The default username to use for sent messages">
+    <f:textbox default="${descriptor.getSlackDefaultUsername()}" />
+  </f:entry>
+  <f:entry title="Emoji" field="slackEmoji"
+           description="The default emoji to use for sent messages">
+    <f:textbox default="${descriptor.getSlackDefaultEmoji()}" />
+  </f:entry>
+  <f:entry title="Title" field="title"
+           description="The title of the message to send">
+    <f:textbox default="Jenkins job ${JOB_NAME}${BUILD_DISPLAY_NAME} done" />
+  </f:entry>
+  <f:entry title="Title link" field="link"
+           description="The link associated to the title of the message">
+    <f:textbox default="$${BUILD_URL}" />
+  </f:entry>
+  <f:entry title="Pretext" field="pretext"
+           description="The pretext of the message (if any)">
+    <f:textbox default="" />
+  </f:entry>
+  <f:entry title="Pretext includes markdown" field="pretextIncludesMarkdown"
+           description="The pretext of the message (if any)">
+    <f:checkbox />
+  </f:entry>
+  <f:entry title="Text" field="text"
+           description="The text of the message">
+    <f:textarea default="Job status is $${BUILD_STATUS}" />
+  </f:entry>
+  <f:entry title="Text includes markdown" field="textIncludesMarkdown"
+           description="The text of the message">
+    <f:checkbox />
+  </f:entry>
+  <f:entry title="Success color" field="colorSuccess"
+           description="The color for successful builds">
+    <f:textbox default="good" />
+  </f:entry>
+  <f:entry title="Unstable color" field="colorUnstable"
+           description="The color for unstable builds">
+    <f:textbox default="warning" />
+  </f:entry>
+  <f:entry title="Failure color" field="colorFailure"
+           description="The color for failed builds">
+    <f:textbox default="danger" />
+  </f:entry>
+</j:jelly>
